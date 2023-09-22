@@ -10,8 +10,12 @@ import { Title, Article } from './App.styled.';
 const LS_KEY = 'contacts';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  /*const [contacts, setContacts] = useState([]);*/
   const [filter, setFilter] = useState('');
+  const [contacts, setContacts] = useState(
+    () =>
+      JSON.parse(window.localStorage.getItem('contacts'))
+  );
 
   useEffect(() => {
     window.localStorage.setItem(LS_KEY, JSON.stringify(contacts));
